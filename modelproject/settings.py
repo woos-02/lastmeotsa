@@ -89,12 +89,12 @@ WSGI_APPLICATION = 'modelproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
@@ -203,3 +203,17 @@ try:
     from .local_settings import *
 except ImportError:
     pass
+
+import pymysql
+pymysql.install_as_MySQLdb()
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': config('meotsa_db'), # DB(스키마) 이름
+        'USER': config('root'), # 유저 이름 (root)
+        'PASSWORD': config('dntjd4954'), # DB 비밀번호
+        'HOST': config('meotsa-db.c9ige462u4ww.ap-northeast-2.rds.amazonaws.com'), # DB 엔드포인트
+        'PORT': 3306,
+    }
+}
