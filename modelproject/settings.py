@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'accounts', 
     'rest_framework',
     'rest_framework.authtoken',
+    'django.contrib.sites',
 	#dj-rest-auth 관련
     'dj_rest_auth',
     'dj_rest_auth.registration',
@@ -54,6 +55,10 @@ INSTALLED_APPS = [
 	'rest_framework_simplejwt',
     'allauth.socialaccount',
 ]
+
+SITE_ID = 1
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
